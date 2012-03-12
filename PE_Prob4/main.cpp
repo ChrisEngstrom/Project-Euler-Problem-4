@@ -1,9 +1,9 @@
 //****************************
-// Chris Engstrom			 *
+// Chris Engstrom            *
 // Project Euler - Problem 4 *
 //*******************************************************************
-// Find the largest palindrome made from the product of				*
-//	two 3-digit numbers.											*
+// Find the largest palindrome made from the product of             *
+//	two 3-digit numbers.                                            *
 //*******************************************************************
 
 #include <iostream>
@@ -12,16 +12,16 @@
 using namespace std;
 
 // FUNCTION PROTOTYPES //
-bool checkPalindrome(int num);		// Checks a number to see if it is a palindrome
-int countDigits(int num);			// Counts the number of digits in a positive number
+bool checkPalindrome(int num);      // Checks a number to see if it is a palindrome
+int countDigits(int num);           // Counts the number of digits in a positive number
 
 int main() {
         
-    int a,						// First factor to the palindrome
-        b,						// Second factor to the palindrome
-        number,					// Number calculated that will be checked
-                                //	to see if it is a palindrome
-        largestPali = -1;		// Store the largest palindrome so far
+    int a,                      // First factor to the palindrome
+        b,                      // Second factor to the palindrome
+        number,                 // Number calculated that will be checked
+                                //  to see if it is a palindrome
+        largestPali = -1;       // Store the largest palindrome so far
 
     cout << "This program finds the largest palindrome made from" << endl 
          << "the product of two 3-digit numbers." << endl << endl;
@@ -43,7 +43,7 @@ int main() {
                     largestPali = number;
                     a = i;
                     b = j;
-                } else {	// A largest palindrome exists
+                } else {    // A largest palindrome exists
                     // Check to see if the current calculated number is
                     //	larger than the previous largest palindrome
                     if(number > largestPali) {
@@ -65,16 +65,16 @@ int main() {
 }
 
 //*******************************************************************************
-// FUNCTION: bool checkPalindrome(int num)										*
-//	int num - Number that will be checked to see if it is a palindrome			*
-//																				*
-// RETURNS - Whether or not the number passed in is a palindrome				*
+// FUNCTION: bool checkPalindrome(int num)                                      *
+//  int num - Number that will be checked to see if it is a palindrome          *
+//                                                                              *
+// RETURNS - Whether or not the number passed in is a palindrome                *
 //*******************************************************************************
 bool checkPalindrome(int num)
 {
-    bool isPali = true;						// Return value, true until proven false
-    int digitCount = countDigits(num);		// Number of digits in num
-    char *possiblePali;						// Pointer for char array equal to num
+    bool isPali = true;                     // Return value, true until proven false
+    int digitCount = countDigits(num);      // Number of digits in num
+    char *possiblePali;                     // Pointer for char array equal to num
     
     // Assign a char array that the calculated number will fit in
     possiblePali = new char [digitCount + 1];
@@ -83,14 +83,14 @@ bool checkPalindrome(int num)
     itoa(num, possiblePali, 10);
 
     // Loop through the left side of the number as long as
-    //	we know that it could be a palindrome
+    //  we know that it could be a palindrome
     for(int i = 0; (i < (digitCount / 2)) && isPali; i++)
     {
         // Check to see if the numbers are the same from
-        //	the outside working in
+        //  the outside working in
         if(possiblePali[i] != possiblePali[(digitCount - 1) - i]) {
             // If the numbers aren't the same then the
-            //	number passed in isn't a palindrome
+            //  number passed in isn't a palindrome
             isPali = false;
         }
     }
@@ -102,10 +102,10 @@ bool checkPalindrome(int num)
 }
 
 //*******************************************************************************
-// FUNCTION: int countDigits(int num)											*
-//	int num - The positive number we are counting the digits of					*
-//																				*
-// RETURNS - The number of digits in num										*
+// FUNCTION: int countDigits(int num)                                           *
+//  int num - The positive number we are counting the digits of                 *
+//                                                                              *
+// RETURNS - The number of digits in num                                        *
 //*******************************************************************************
 int countDigits(int num)
 {
